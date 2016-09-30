@@ -5,30 +5,30 @@ http://slides.com/javiergs/ser431-l05
 
 #include "glut.h"
 
-// myDisplay
-void myDisplay() {
-  glClear(GL_COLOR_BUFFER_BIT); // clear the window
-  glBegin(GL_POLYGON);  // fill connected polygon
-  glVertex2f(0.0, 0.0);  // vertices of the square 
-  glVertex2f(0.5, 0.5);
-  glVertex2f(0.5, 0.0);
-  glEnd();
-  glBegin(GL_POLYGON);  // fill connected polygon
-  glVertex2f(0.0, 0.0);  // vertices of the square 
-  glVertex2f(-0.5, -0.5);
-  glVertex2f(-0.5, 0.0);
-  glEnd();
-  glFlush();  //forces issued commands to execute
-}
-
 // myInit
 void myInit() {
-  glClearColor(1.0, 0.0, 0.0, 1.0); // red clear color
-  glColor3f(1.0, 1.0, 1.0);  // white
+  glClearColor(0.764f, 0.129f, 0.282f, 1.0); // maroon clear color
+  glColor3f(1.0f, 0.843f, 0.0f);  // gold
   // projection transformations
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluOrtho2D(-1.0, 1.0, -1.0, 1.0); // units inside
+}
+
+// myDisplay
+void myDisplay() {
+  glClear(GL_COLOR_BUFFER_BIT); // clear the window
+  glBegin(GL_POLYGON);  // fill connected polygon
+  glVertex2f(-0.7,  0.7);  // vertices of the square 
+  glVertex2f( 0.6,  0.7);
+  glVertex2f(-0.7, -0.6);
+  glEnd();
+  glBegin(GL_POLYGON);  // fill connected polygon
+  glVertex2f( 0.7,  0.6);  // vertices of the square 
+  glVertex2f(-0.6, -0.7);
+  glVertex2f( 0.7, -0.7);
+  glEnd();
+  glFlush();  //forces issued commands to execute
 }
 
 // main
