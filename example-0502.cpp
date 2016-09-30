@@ -23,12 +23,12 @@ void myDisplay() {
   glClear(GL_COLOR_BUFFER_BIT); // clear the window
   glColor3f(triangle_color_R, triangle_color_G, triangle_color_B);  // gold
   glBegin(GL_POLYGON);  // fill connected polygon
-  glVertex2f(corner_x,  corner_y);  // vertices of the square 
+  glVertex2f(corner_x,  corner_y);  // vertices of the triangle 2 
   glVertex2f(corner_x+1.30,  corner_y);
   glVertex2f(corner_x, corner_y-1.30);
   glEnd();
   glBegin(GL_POLYGON);  // fill connected polygon
-  glVertex2f(corner_x+1.40, corner_y-0.1);  // vertices of the square 
+  glVertex2f(corner_x+1.40, corner_y-0.1);  // vertices of the triangle 2
   glVertex2f(corner_x+0.1, corner_y-1.40);
   glVertex2f(corner_x+1.40, corner_y-1.40);
   glEnd();
