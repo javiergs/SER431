@@ -1,3 +1,8 @@
+/*
+Lecture 05
+http://slides.com/javiergs/ser431-l05
+*/
+
 #include "glut.h"
 
 // myDisplay
