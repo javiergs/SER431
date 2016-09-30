@@ -19,12 +19,12 @@ void myInit() {
 void myDisplay() {
   glClear(GL_COLOR_BUFFER_BIT); // clear the window
   glBegin(GL_POLYGON);  // fill connected polygon
-  glVertex2f(-0.7,  0.7);  // vertices of the square 
+  glVertex2f(-0.7,  0.7);  // vertices of the triangl 1
   glVertex2f( 0.6,  0.7);
   glVertex2f(-0.7, -0.6);
   glEnd();
   glBegin(GL_POLYGON);  // fill connected polygon
-  glVertex2f( 0.7,  0.6);  // vertices of the square 
+  glVertex2f( 0.7,  0.6);  // vertices of the triangle 2 
   glVertex2f(-0.6, -0.7);
   glVertex2f( 0.7, -0.7);
   glEnd();
