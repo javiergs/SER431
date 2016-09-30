@@ -48,5 +48,4 @@ void main() {
   //calculate the area of the triangle with vertex v0,v1,v2
   float area = triangle_area(v0, v1, v2);
   printf("the area of the triangle is %.4f\n", area);
-
 }
