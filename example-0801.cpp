@@ -11,7 +11,6 @@ GLuint drawDL;
 void createDisplayList() {
   drawDL = glGenLists(1);
   glNewList(drawDL, GL_COMPILE);
-  glRectf(5.0, 5.0, 10.0, 30.0);
   glBegin(GL_POLYGON);  
     glVertex2f(-0.7, 0.7); 
     glVertex2f(0.6, 0.7);
