@@ -1,3 +1,8 @@
+/*
+Lecture 07
+http://slides.com/javiergs/ser431-l07
+*/
+
 #include "glut.h"
 
 int defaultHeight = 500;
