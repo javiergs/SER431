@@ -1,3 +1,8 @@
+/*
+Lecture 07
+http://slides.com/javiergs/ser431-l07
+*/
+
 #include "glut.h"
 
 int year = 0, day = 0;
