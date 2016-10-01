@@ -1,3 +1,9 @@
+
+/*
+Lecture 06
+http://slides.com/javiergs/ser431-l06
+*/
+
 #include "glut.h"
 
 // myInit
