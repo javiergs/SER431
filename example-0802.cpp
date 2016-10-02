@@ -8,7 +8,7 @@ http://slides.com/javiergs/ser431-l08
 float r=0, g=0, b=0;
 float position_y=0;
 
-// processMenuEvents
+// menuListener
 void menuListener(int option) {
   switch (option) {
   case 1:
@@ -29,6 +29,7 @@ void menuListener(int option) {
   glutPostRedisplay();
 }
 
+// createMenus
 void createMenus() {
   //add entries to submenu Colores
   int menuA = glutCreateMenu(menuListener);
@@ -51,6 +52,7 @@ void createMenus() {
 
 // myInit
 void myInit() {
+  // create menu
   createMenus();
   glClearColor(0.764f, 0.129f, 0.282f, 1.0);
   // projection transformations
