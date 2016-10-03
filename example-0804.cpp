@@ -1,3 +1,8 @@
+/*
+Lecture 08
+http://slides.com/javiergs/ser431-l08
+*/
+
 #include <stdio.h>
 #include <math.h>
 #include "glut.h"
