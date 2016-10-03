@@ -1,6 +1,6 @@
 /*
-Lecture 09
-http://slides.com/javiergs/ser431-l09
+Lecture 10
+http://slides.com/javiergs/ser431-l10
 */
 
 #include <vector>
