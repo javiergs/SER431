@@ -1,3 +1,8 @@
+/*
+Lecture 08
+http://slides.com/javiergs/ser431-l08
+*/
+
 #include <vector>
 #include "imathvec.h"
 #include "glut.h"
