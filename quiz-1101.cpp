@@ -1,3 +1,8 @@
+/*
+Quiz 1 - Lectures 1- 10
+http://slides.com/javiergs/ser431-l10
+*/
+
 #include <vector>
 #include "imathvec.h"
 #include "glut.h"
