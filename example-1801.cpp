@@ -1,7 +1,9 @@
 /*
-Lecture 17
-http://slides.com/javiergs/ser431-l18
-*/
+ * Lecture 17
+ * http://slides.com/javiergs/ser431-l18
+ *
+ * Note: BMP and OBJ files needed are available on the folders resources-bmp and resources-obj
+ */
 
 #include <vector>
 #include "imathvec.h"
