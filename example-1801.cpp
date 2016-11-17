@@ -150,7 +150,7 @@ void codedTexture(UINT textureArray[], int n) {
   glBindTexture(GL_TEXTURE_2D, textureArray[n]);
   glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // must set to 1 for compact data
                                          // glTexImage2D Whith size and minification
-  gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TexWidth, TexHeight, GL_BGR_EXT, GL_UNSIGNED_BYTE, textureImage);
+  gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TexWidth, TexHeight, GL_BGRA_EXT, GL_UNSIGNED_BYTE, textureImage); // BGRA to include alpha
 
 }
 
