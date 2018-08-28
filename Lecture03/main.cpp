@@ -1,6 +1,6 @@
 /*
-Lecture 25
-http://slides.com/javiergs/ser332-l25
+Lecture 03
+http://javiergs/teaching/ser431
 javiergs@asu.edu
 */
 
