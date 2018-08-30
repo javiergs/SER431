@@ -4,5 +4,5 @@ Textures
 
 
 <p align="center">
-  <img src="ScreenShot.png" width="480"/>
+  <img src="screenshot.png" width="480"/>
 </p>
