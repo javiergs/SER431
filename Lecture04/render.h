@@ -34,9 +34,7 @@ GLuint meshToDisplayList(Mesh* m, int id, int texture) {
 		glVertex3fv(&m->dot_vertex[m->face_index_vertex[i]].x);
 	}
 	glEnd();
-	if (id != 3) {
-		glDisable(GL_TEXTURE_2D);
-	}
+	glDisable(GL_TEXTURE_2D);
 	glEndList();
 	return listID;
 }
