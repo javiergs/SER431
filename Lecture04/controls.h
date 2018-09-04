@@ -30,18 +30,6 @@ float camera_viewing_z = 0.0;
 
 float total_moving_angle = 0.0;
 
-// right and left walking
-void orientMe(float ang) {
-	camera_viewing_x = sin(ang);
-	camera_viewing_z = -cos(ang);
-}
-
-// fordward and backward walking
-void moveMeFlat(int k) {
-	camera_x = camera_x + k * (camera_viewing_x);
-	camera_z = camera_z + k * (camera_viewing_z);
-}
-
 // mouse
 void mouse(int button, int state, int x, int y) {
 	mouse_x = x;
