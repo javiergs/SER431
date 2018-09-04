@@ -1,3 +1,8 @@
+/**
+ * SER 431
+ * https://speakerdeck.com/javiergs/ser431-lecture-04
+ **/
+
 #pragma once
 #include <GL/glut.h>
 #include "mesh.h"
