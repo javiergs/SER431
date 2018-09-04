@@ -1,10 +1,15 @@
+/**
+ * SER 431
+ * https://speakerdeck.com/javiergs/ser431-lecture-04
+ **/
+
 #pragma once
 
 #include "noise.h"
 
 // t_scale
 float t_scale(float x) {
-	// assuming noise report values -2.xxx to 2.xxx
+  	// assuming noise report values -2.xxx to 2.xxx
 	return (x + 2) / 4;
 }
 
@@ -22,87 +27,14 @@ Vec3f skyMap(float a) {
 	return ((1 - a) * white + a * color);
 }
 
-// Load a DIB/BMP file from disk.
-GLubyte *LoadDIBitmap(const char *filename, BITMAPINFO **info) {
-	FILE *fp;      // open file pointer
-	GLubyte * bits; // bitmap pixel bits
-	int bitsize;   // Size of bitmap
-	int infosize;  // Size of header information
-	BITMAPFILEHEADER header; // File header
-							 // try opening the file; use "rb" mode to read this *binary* file.
-	if ((fp = fopen(filename, "rb")) == NULL)
-		return (NULL);
-	// read the file header and any following bitmap information.
-	if (fread(&header, sizeof(BITMAPFILEHEADER), 1, fp) < 1) {
-		// Couldn't read the file header - return NULL.
-		fclose(fp);
-		return (NULL);
-	}
-	// Check for BM reversed.
-	if (header.bfType != 'MB') {
-		// not a bitmap file - return NULL.
-		fclose(fp);
-		return (NULL);
-	}
-	infosize = header.bfOffBits - sizeof(BITMAPFILEHEADER);
-	if ((*info = (BITMAPINFO *)malloc(infosize)) == NULL) {
-		// couldn't allocate memory for bitmap info - return NULL.
-		fclose(fp);
-		return (NULL);
-	}
-	if (fread(*info, 1, infosize, fp) < infosize) {
-		// Couldn't read the bitmap header - return NULL.
-		free(*info);
-		fclose(fp);
-		return (NULL);
-	}
-	// Now that we have all the header info read in, allocate memory for the bitmap and read *it* in.
-	if ((bitsize = (*info)->bmiHeader.biSizeImage) == 0)
-		bitsize = ((*info)->bmiHeader.biWidth*(*info)->bmiHeader.biBitCount + 7) / 8 * abs((*info)->bmiHeader.biHeight);
-	if ((bits = (GLubyte *)malloc(bitsize)) == NULL) {
-		// Couldn't allocate memory - return NULL!
-		free(*info);
-		fclose(fp);
-		return (NULL);
-	}
-	if (fread(bits, 1, bitsize, fp) < bitsize) {
-		// couldn't read bitmap - free memory and return NULL!
-		free(*info);
-		free(bits);
-		fclose(fp);
-		return (NULL);
-	}
-	// OK, everything went fine - return the allocated bitmap.
-	fclose(fp);
-	return (bits);
-}
-
-// Create texture from BMP file
-void bmpTexture(UINT textureArray[], const char *file, int n) {
-	BITMAPINFO *bitmapInfo; // Bitmap information
-	GLubyte    *bitmapBits; // Bitmap data
-	if (!file) {
-		cout << "texture file not found!" << endl;
-		return;
-	}
-	bitmapBits = LoadDIBitmap(file, &bitmapInfo);
-	glGenTextures(1, &textureArray[n]);
-	glBindTexture(GL_TEXTURE_2D, textureArray[n]);
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // must set to 1 for compact data
-										   // glTexImage2D Whith size and minification
-	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, bitmapInfo->bmiHeader.biWidth, bitmapInfo->bmiHeader.biHeight, GL_BGR_EXT, GL_UNSIGNED_BYTE, bitmapBits);
-}
-
 void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n) {
 
 	printf("Reading image %s\n", imagepath);
-
 	// Data read from the header of the BMP file
 	unsigned char header[54];
 	unsigned int dataPos;
 	unsigned int imageSize;
 	unsigned int width, height;
-	// Actual RGB data
 	unsigned char * data;
 
 	// Open the file
@@ -112,9 +44,6 @@ void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n) {
 		getchar();
 		return;
 	}
-
-	// Read the header, i.e. the 54 first bytes
-
 	// If less than 54 bytes are read, problem
 	if (fread(header, 1, 54, file) != 54) {
 		printf("Not a correct BMP file\n");
@@ -130,35 +59,21 @@ void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n) {
 	// Make sure this is a 24bpp file
 	if (*(int*)&(header[0x1E]) != 0) { printf("Not a correct BMP file\n");    fclose(file); return; }
 	if (*(int*)&(header[0x1C]) != 24) { printf("Not a correct BMP file\n");    fclose(file); return; }
-
 	// Read the information about the image
 	dataPos = *(int*)&(header[0x0A]);
 	imageSize = *(int*)&(header[0x22]);
 	width = *(int*)&(header[0x12]);
 	height = *(int*)&(header[0x16]);
-
 	// Some BMP files are misformatted, guess missing information
 	if (imageSize == 0)    imageSize = width * height * 3; // 3 : one byte for each Red, Green and Blue component
 	if (dataPos == 0)      dataPos = 54; // The BMP header is done that way
-
-										 // Create a buffer
 	data = new unsigned char[imageSize];
-
-	// Read the actual data from the file into the buffer
 	fread(data, 1, imageSize, file);
-
-	// Everything is in memory now, the file can be closed.
 	fclose(file);
 
 	// Create one OpenGL texture
 	glGenTextures(1, &textureArray[n]);
-	
-	// "Bind" the newly created texture : all future texture functions will modify this texture
-
 	glBindTexture(GL_TEXTURE_2D, textureArray[n]);
-
-	// Give the image to OpenGL
-	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, data);
 
 	glGenTextures(1, &textureArray[n]);
 	glBindTexture(GL_TEXTURE_2D, textureArray[n]);
@@ -166,28 +81,18 @@ void loadBMP_custom(GLuint textureArray[], const char * imagepath, int n) {
 										   // glTexImage2D Whith size and minification
 	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_BGR_EXT, GL_UNSIGNED_BYTE, data);
 
-	// OpenGL has now copied the data. Free our own version
 	delete[] data;
 
 	// Poor filtering, or ...
 	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); 
-
 	// ... nice trilinear filtering ...
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	// ... which requires mipmaps. Generate them automatically.
-	//glGenerateMipmap(GL_TEXTURE_2D);
 
-	// Return the ID of the texture we just created
-	//return textureID;
 }
-
-
-
-
 
 // Create texture from algorithm
 void codedTexture(UINT textureArray[], int n, int type) {
