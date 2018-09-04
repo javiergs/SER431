@@ -38,7 +38,7 @@ void init() {
 	
 	// textures
 	loadBMP_custom(textures, "../../BMP files/brick.bmp", 0);
-	bmpTexture(textures, "../../BMP files/oldbox.bmp", 1);
+	loadBMP_custom(textures, "../../BMP files/oldbox.bmp", 1);
 	codedTexture(textures, 2, 0); //Sky texture - noise multiscale. Type=0
 	codedTexture(textures, 3, 1); //Marble texture - noise marble. Type=1
 	loadBMP_custom(textures, "../../BMP files/cubesky.bmp", 4);
