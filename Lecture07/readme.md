@@ -6,6 +6,4 @@ Environmental Elements
   <img src="screen_fog.png" width="480"/>
 </p>
 
-* Reflection
-
-* Shadows
+* Reflections and Shadows
