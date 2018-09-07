@@ -1,6 +1,6 @@
 /*
-Lecture 07
-Stencil Buffer 
+Lecture 07. 
+Stencil Buffer with a 2D Mask
 http://javiergs/teaching/ser431
 javiergs@asu.edu
 */
