@@ -1,9 +1,9 @@
-
 #include <time.h>
 #include <windows.h> 
 #include<iostream>
 
 using namespace std;
+
 static float averageFrameTime = 0.0001f;
 static float lastFiveTimes[5] = { 0.0001f,0.0001f,0.0001f,0.0001f,0.0001f };
 static unsigned char dx = 0;
@@ -25,7 +25,7 @@ void  init_frame_timer() {
 
 // Get the current time
 float get_current_time() {
-	__int64 end_clock;
+	LONGLONG end_clock;
 	QueryPerformanceCounter((LARGE_INTEGER*)&end_clock);
 	return  (end_clock - start_clock) * frequency;
 }
@@ -43,9 +43,9 @@ float calculate_frame_time() {
 	float *p = lastFiveTimes;
 	float *e = p + 5;
 	averageFrameTime = 0.0f;
-	for (; p != e; ++p)	{
+	for (; p != e; ++p) {
 		averageFrameTime += *p;
 	}
-	averageFrameTime *= 0.2f;	
+	averageFrameTime *= 0.2f;
 	return averageFrameTime;
 }
