@@ -14,6 +14,17 @@ float Points[7][3] = {
 unsigned int N = 20;
 
 #define NUM_SEGMENTS (NUM_POINTS+1)
+//	curve segments to be draw
+//
+//  0 0 0 1
+//    0 0 1 2
+//      0 1 2 3
+//        1 2 3 4
+//          2 3 4 5
+//            3 4 5 6
+//              4 5 6 6
+//                5 6 6 6
+//
 
 // getPoint
 float* GetPoint(int i) {
@@ -34,17 +45,7 @@ void keyboard(unsigned char key, int, int) {
 	glutPostRedisplay();
 }
 
-//	curve segments to be draw
-//
-//	0 0 0 1
-//    0 0 1 2
-//      0 1 2 3
-//        1 2 3 4
-//          2 3 4 5
-//            3 4 5 6
-//              4 5 6 6
-//                5 6 6 6
-//
+
 
 // display
 void display() {
@@ -64,11 +65,11 @@ void display() {
 
 	// draw (NUM_POINTS+1) curves. 
 	glBegin(GL_LINE_STRIP);
-	float loop=0;
-	for (int start_cv = -3, j = 0; j != NUM_SEGMENTS; ++j, ++start_cv) {
+	float color=0;
+	for (int segment = -3, j = 0; j != NUM_SEGMENTS; ++j, ++segment) {
 		// for each section of curve, draw N divisions
-		loop = !loop;
-		glColor3f(loop, 1, loop);
+		color = !color;
+		glColor3f(color, 1, color);
 		for (int i = 0; i != N; ++i) {
 			float t = (float)i / N;
 			float it = 1.0f - t;
@@ -78,20 +79,20 @@ void display() {
 			float b2 = (-3 * t*t*t + 3 * t*t + 3 * t + 1) / 6.0f;
 			float b3 = t * t*t / 6.0f;
 			// calculate the x,y and z of the curve point
-			float x = b0 * GetPoint(start_cv + 0)[0] +
-				b1 * GetPoint(start_cv + 1)[0] +
-				b2 * GetPoint(start_cv + 2)[0] +
-				b3 * GetPoint(start_cv + 3)[0];
+			float x = b0 * GetPoint(segment + 0)[0] +
+				b1 * GetPoint(segment + 1)[0] +
+				b2 * GetPoint(segment + 2)[0] +
+				b3 * GetPoint(segment + 3)[0];
 
-			float y = b0 * GetPoint(start_cv + 0)[1] +
-				b1 * GetPoint(start_cv + 1)[1] +
-				b2 * GetPoint(start_cv + 2)[1] +
-				b3 * GetPoint(start_cv + 3)[1];
+			float y = b0 * GetPoint(segment + 0)[1] +
+				b1 * GetPoint(segment + 1)[1] +
+				b2 * GetPoint(segment + 2)[1] +
+				b3 * GetPoint(segment + 3)[1];
 
-			float z = b0 * GetPoint(start_cv + 0)[2] +
-				b1 * GetPoint(start_cv + 1)[2] +
-				b2 * GetPoint(start_cv + 2)[2] +
-				b3 * GetPoint(start_cv + 3)[2];
+			float z = b0 * GetPoint(segment + 0)[2] +
+				b1 * GetPoint(segment + 1)[2] +
+				b2 * GetPoint(segment + 2)[2] +
+				b3 * GetPoint(segment + 3)[2];
 
 			// specify the point
 			glVertex3f(x, y, z);
