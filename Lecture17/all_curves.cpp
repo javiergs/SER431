@@ -336,7 +336,7 @@ int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
 	glutInitWindowSize(640, 480);
-	glutCreateWindow("B-Spline Curves: w/s to Change Level of Detail");
+	glutCreateWindow("All Curves: w/s to Change Level of Detail");
 	init();
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
