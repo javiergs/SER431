@@ -34,11 +34,9 @@ GLUnurbsObj *nurbsflag;
 
 // init
 void init(void) {
-	GLfloat mat_diffuse[] = { .8, .1, .8, 1. };
-	GLfloat mat_specular[] = { .6, .6, .6, 1. };
-	GLfloat mat_ambient[] = { .1, .1, .1, 1. };
-	glClearColor(.58, .58, .58, 0.);
-	glClearDepth(1.);
+	GLfloat mat_diffuse[] = { 1.0f, 0.5f, 0.31f, 1. };
+	GLfloat mat_specular[] = { 0.5f, 0.5f, 0.5f, 1. };
+	GLfloat mat_ambient[] = { 1.0f, 0.5f, 0.31f, 1. };
 	glEnable(GL_DEPTH_TEST);
 	glMatrixMode(GL_PROJECTION);
 	gluPerspective(60, 1.0, 1.0, 10.0);
@@ -61,7 +59,7 @@ void init(void) {
 void draw_control_graph(Point cpoints[S_NUMPOINTS][T_NUMPOINTS]) {
 	int s, t;
 	glDisable(GL_LIGHTING);
-	glColor3f(0., 1., 0.);
+	glColor3f(0, 0, 1);
 	glBegin(GL_LINES);
 	for (s = 0; s<S_NUMPOINTS; s++)
 		for (t = 0; t<T_NUMPOINTS - 1; t++) {
