@@ -40,29 +40,41 @@ void resize(int width, int height) {
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	glTranslatef(0.0f, 0.0f, -5.0f);
+	glTranslatef(0.0f, 0.0f, -20.0f);
 
 	GLfloat ctlpoints[][3] = { 
-		{ -3.0, -2.0, 0.0 },{ -2.0, 2.0, 0.0 },
-		{ 2.0, -2.0, 0.0 },{ 3.0, 2.0, 0.0 },
-		{ 3.0, -2.0, 0.0 },{ 2.0, 2.0, 0.0 },
-		{ -2.0, -2.0, 0.0 },{ -3.0, 2.0, 0.0 },
-		{ 1.0, 1.0, 0.0 } 
+		{ 10, 10, 0 },
+	{ 5, 10, 0 },
+	{ 0,  0, 0 },
+	{ -5, -5, 0 },
+	{ -10,  0, 0 },
+	{ -5, 10, 0 },
+	{ 0,  5, 0 }
 	};
 
 	glColor3f(0, 1, 0);
 
-	GLfloat knots[8] = {
-		0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0
+	GLfloat knots[11] = {
+		0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 6.0, 6.0
 	};
+
 	gluBeginCurve(nurbs);
 	gluNurbsCurve(nurbs,
-		8, knots,
+		11, knots,
 		3,
 		&ctlpoints[0][0],
 		4,
 		GL_MAP1_VERTEX_3);
 	gluEndCurve(nurbs);
+
+	// draw control points
+	glColor3f(1, 0, 0);
+	glPointSize(3);
+	glBegin(GL_POINTS);
+	for (int i = 0; i < 7; ++i) {
+		glVertex3fv(ctlpoints[i]);
+	}
+	glEnd();
 
 	glutSwapBuffers();
 }
