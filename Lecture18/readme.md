@@ -15,6 +15,6 @@
 * NURBS Example 02 – flag moving
 
 <p align="center">
-  <img src="flag.png" width="480"/>
+  <img src="flagcpp.png" width="480"/>
 </p>
 
