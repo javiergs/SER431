@@ -122,7 +122,6 @@ int main(int argc, char *argv[]) {
 	glutCreateWindow("NURBS Oscillating Flag");
 	glutDisplayFunc(draw_nurb);
 	glutReshapeFunc(resize);
-	//glutMouseFunc(Button);
 	glutTimerFunc(1000.0 / 30.0, timer, 0); 
 	init();
 	glutMainLoop();
