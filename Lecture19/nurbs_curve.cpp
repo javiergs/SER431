@@ -12,7 +12,7 @@ void init() {
 	windowWidth = 640; windowHeight = 480;
 	glutInitWindowSize(windowWidth, windowHeight);
 	glutInitWindowPosition(10, 10);
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
+	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutCreateWindow("NURBS for a curve");
 	glEnable(GL_DEPTH_TEST);
 }
@@ -29,10 +29,6 @@ void resize(int width, int height) {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
-	glEnable(GL_CULL_FACE);
-	glShadeModel(GL_FLAT);
-	glEnable(GL_MAP1_VERTEX_3); 
 	nurbs = gluNewNurbsRenderer();
 }
 
@@ -93,7 +89,6 @@ void display() {
 		glVertex3fv(ctlpoints[i]);
 	}
 	glEnd();
-
 
 	glutSwapBuffers();
 }
