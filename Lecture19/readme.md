@@ -11,7 +11,7 @@
   <img src="nurbs00.png" width="320"/>
 </p>
 
-* NURBS Example One
+* nurbs_surface_simple.cpp - A surface using NURBS interface
 
 <p align="center">
   <img src="nurbs01.png" width="320"/>
