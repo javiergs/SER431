@@ -140,7 +140,7 @@ int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_RGBA | GLUT_DOUBLE);
 	glutInitWindowSize(640, 480);
-	glutCreateWindow("Bezier Surface: W/S to Change Level of Detail");
+	glutCreateWindow("Surface - Use W/S to Change Level of Detail");
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutKeyboardFunc(keyboard);
