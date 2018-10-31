@@ -5,7 +5,7 @@
   <img src="bzsurface.png" width="320"/>
 </p>
 
-* NURBS Example Zero
+* nurbs_curve.cpp - A curve using NURBS interface
 
 <p align="center">
   <img src="nurbs00.png" width="320"/>
