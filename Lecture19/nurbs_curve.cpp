@@ -13,7 +13,7 @@ void init() {
 	glutInitWindowSize(windowWidth, windowHeight);
 	glutInitWindowPosition(10, 10);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
-	glutCreateWindow("Simple NURBS");
+	glutCreateWindow("NURBS for a curve");
 	glEnable(GL_DEPTH_TEST);
 }
 
@@ -53,9 +53,19 @@ void display() {
 	};
 
 	glColor3f(0, 1, 0);
-
+	//	curve segments to be draw
+	//
+	//  0 0 0 1
+	//    0 0 1 2
+	//      0 1 2 3
+	//        1 2 3 4
+	//          2 3 4 5
+	//            3 4 5 6
+	//              4 5 6 6
+	//                5 6 6 6
+	//
 	GLfloat knots[11] = {
-		0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 6.0, 6.0
+		 0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 6.0, 6.0
 	};
 
 	gluBeginCurve(nurbs);
@@ -75,6 +85,15 @@ void display() {
 		glVertex3fv(ctlpoints[i]);
 	}
 	glEnd();
+
+	// control graph
+	glColor3f(0, 0, 1);
+	glBegin(GL_LINE_STRIP);
+	for (int i = 0; i != 7; ++i) {
+		glVertex3fv(ctlpoints[i]);
+	}
+	glEnd();
+
 
 	glutSwapBuffers();
 }
