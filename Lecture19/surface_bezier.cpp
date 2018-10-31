@@ -94,7 +94,7 @@ void display() {
 			}
 		}
 	glEnd();
-	// control points
+	// control graph
 	glColor3f(0, 0, 1);
 	for (int i = 0; i < 4; ++i) {
 		glBegin(GL_LINE_STRIP);
