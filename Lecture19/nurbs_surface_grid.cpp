@@ -9,14 +9,10 @@ GLfloat ctlpoints[4][4][3] = {
     { { 20, 0, -10 },{ 0, 0, -10 },{ -5, 0, -10 },{ -10, 0, -10 } }
 };
 
-int showPoints = 0;
 GLUnurbsObj *theNurb;
 
 // init
 void init(void) {
-	GLfloat mat_diffuse[] = { 0.7, 0.7, 0.7, 1.0 };
-	GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat mat_shininess[] = { 100.0 };
 	theNurb = gluNewNurbsRenderer();
 	gluNurbsProperty(theNurb, GLU_SAMPLING_TOLERANCE, 25.0);
 	gluNurbsProperty(theNurb, GLU_DISPLAY_MODE, GLU_OUTLINE_POLYGON);
