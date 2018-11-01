@@ -23,7 +23,7 @@
   <img src="nurbs_solid.png" width="320"/>
 </p>
 
-* NURBS Example 02 – flag moving
+* nurbs_flag.cpp - A surface using NURBS interface (animated)
 
 <p align="center">
   <img src="flagcpp.png" width="320"/>
