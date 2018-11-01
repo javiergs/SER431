@@ -17,10 +17,10 @@
   <img src="nurbs_grid.png" width="320"/>
 </p>
 
-* nurbs_surface_simple.cpp - A surface using NURBS interface
+* nurbs_surface_solid.cpp - A surface using NURBS interface (with light and materials)
 
 <p align="center">
-  <img src="nurbs01.png" width="320"/>
+  <img src="nurbs_solid.png" width="320"/>
 </p>
 
 * NURBS Example 02 – flag moving
