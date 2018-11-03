@@ -108,6 +108,7 @@ void drawLightArrow() {
 	glPopMatrix();
 }
 
+
 GLUnurbsObj *theNurb;
 
 // display
@@ -155,7 +156,6 @@ void display(void) {
 	};
 	GLfloat uknots[10] = { 0.0, 0.0, 0.0, 0.0, 1.0, 3.0, 5.0, 5.0, 5.0, 5.0 }; // 4 times
 	GLfloat vknots[10] = { 0.0, 0.0, 0.0, 0.0, 1.0, 3.0, 5.0, 5.0, 5.0, 5.0 };
-	
 	GLUnurbsObj *theNurb;
 	theNurb = gluNewNurbsRenderer();
 	gluNurbsProperty(theNurb, GLU_SAMPLING_TOLERANCE, 25.0);
@@ -207,7 +207,7 @@ void main(int argc, char* argv[]) {
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_STENCIL);
 	glutInitWindowPosition(0, 0);
 	glutInitWindowSize(width, height);
-	glutCreateWindow("Shadows");
+	glutCreateWindow("NURBS playground");
 	// callbacks
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);
