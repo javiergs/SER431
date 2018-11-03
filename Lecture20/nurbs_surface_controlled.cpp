@@ -140,6 +140,11 @@ void display(void) {
 	glPopMatrix();
 
 	// NURBS
+	// 6 curves with 6 control points each
+	// 10 knots per curve and 10 knots per inter-curve conection (controlpnt + 4)
+	// 6*3 and 3 offsets
+	// cubic equations (4)
+
 	GLfloat ctlpoints[6][6][3] = {
 	{ { 25, 5,  15 } ,{ 20, 5,  15 },{ 0, 0,  15 },{ -5, 0,  15 },{ -10, 5,  15 }   ,{ -15, 5,  15 } },
 	{ { 25, 5,  10 } ,{ 20, 0,  10 },{ 0, 0,  10 },{ -5, 0,  10 },{ -10, 0,  10 }   ,{ -15, 5,  10 } },
@@ -148,8 +153,9 @@ void display(void) {
 	{ { 25, 5,  -10 } ,{ 20, 0, -10 },{ 0, 0, -10 },{ -5, 0, -10 },{ -10, 0, -10 }   ,{ -15, 5,  -10 } },
 	{ { 25, 5,  -15 } ,{ 20, 5, -15 },{ 0, 0, -15 },{ -5, 0, -15 },{ -10, 5, -15 }   ,{ -15, 5,  -15 } }
 	};
-	GLfloat uknots[10] = { 0.0, 0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 3.0, 3.0, 3.0 }; //ctrlpoints + 4
-	GLfloat vknots[10] = { 0.0, 0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 3.0, 3.0, 3.0 }; //ctrlpoints + 4
+	GLfloat uknots[10] = { 0.0, 0.0, 0.0, 0.0, 1.0, 3.0, 5.0, 5.0, 5.0, 5.0 }; // 4 times
+	GLfloat vknots[10] = { 0.0, 0.0, 0.0, 0.0, 1.0, 3.0, 5.0, 5.0, 5.0, 5.0 };
+	
 	GLUnurbsObj *theNurb;
 	theNurb = gluNewNurbsRenderer();
 	gluNurbsProperty(theNurb, GLU_SAMPLING_TOLERANCE, 25.0);
