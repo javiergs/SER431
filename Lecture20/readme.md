@@ -1,8 +1,8 @@
 
-* nurbs_surface_solid.cpp - A surface using NURBS interface (with light and materials)
+* nurbs_surface_two.cpp - A surface using NURBS interface (with light moving and materials and camera controls) 
 
 <p align="center">
-  <img src="nurbs_solid.png" width="320"/>
+  <img src="nurbstwo.png" width="320"/>
 </p>
 
 * nurbs_flag.cpp - A surface using NURBS interface (animated)
