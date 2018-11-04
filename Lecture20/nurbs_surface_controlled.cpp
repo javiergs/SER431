@@ -141,36 +141,40 @@ void display(void) {
 	glPopMatrix();
 
 	// NURBS
-	// 6 curves with 6 control points each
-	// 10 knots per curve and 10 knots per inter-curve conection (controlpnt + 4)
-	// 6*3 and 3 offsets
+	// V_size curves with U_size control points each
+	// V_size + ORDER knots per curve and U_size + ORDER knots per inter-curve conection (controlpnt + 4)
+	// V_size*3 and 3 offsets
 	// cubic equations (4)
 
-	GLfloat ctlpoints[6][6][3] = {
-	{ { 25, 5,  15 } ,{ 20, 5,  15 },{ 0, 0,  15 },{ -5, 0,  15 },{ -10, 5,  15 }   ,{ -15, 5,  15 } },
+	const int V_size = 6;
+	const int U_size = 6;
+	const int ORDER =  4;
+	GLfloat ctlpoints[U_size][V_size][3] = {
+		{ { 25, 5,  15 } ,{ 20, 5,  15 },{ 0, 0,  15 },{ -5, 0,  15 },{ -10, 5,  15 }   ,{ -15, 5,  15 } },
 	{ { 25, 5,  10 } ,{ 20, 0,  10 },{ 0, 0,  10 },{ -5, 0,  10 },{ -10, 0,  10 }   ,{ -15, 5,  10 } },
 	{ { 25, 0,   5 } ,{ 20, 0,   5 },{ 0, 15,   5 },{ -5, 15,   5 },{ -10, 0,   5 } ,{ -15, 0,  5 } },
 	{ { 25, 0,  -5 } ,{ 20, 0,  -5 },{ 0, 10,  -5 },{ -5, 10,  -5 },{ -10, 0,  -5 } ,{ -15, 0,  -5 } },
 	{ { 25, 5,  -10 } ,{ 20, 0, -10 },{ 0, 0, -10 },{ -5, 0, -10 },{ -10, 0, -10 }   ,{ -15, 5,  -10 } },
 	{ { 25, 5,  -15 } ,{ 20, 5, -15 },{ 0, 0, -15 },{ -5, 0, -15 },{ -10, 5, -15 }   ,{ -15, 5,  -15 } }
 	};
-	GLfloat uknots[10] = { 0.0, 0.0, 0.0, 0.0, 1.0, 3.0, 5.0, 5.0, 5.0, 5.0 }; // 4 times
-	GLfloat vknots[10] = { 0.0, 0.0, 0.0, 0.0, 1.0, 3.0, 5.0, 5.0, 5.0, 5.0 };
+	GLfloat vknots[V_size + ORDER] = { 0.0, 0.0, 0.0, 0.0, 1.0, 3.0, 5.0, 5.0, 5.0, 5.0 };
+	GLfloat uknots[U_size + ORDER] = { 0.0, 0.0, 0.0, 0.0, 1.0, 3.0, 5.0, 5.0, 5.0, 5.0 };
+
 	GLUnurbsObj *theNurb;
 	theNurb = gluNewNurbsRenderer();
 	gluNurbsProperty(theNurb, GLU_SAMPLING_TOLERANCE, 25.0);
 	gluNurbsProperty(theNurb, GLU_DISPLAY_MODE, GLU_FILL);
 
 	glPushMatrix();
-	glScalef(15, 15, 15);
+	glScalef(10, 10, 10);
 	gluBeginSurface(theNurb);
 	gluNurbsSurface(theNurb,
-		10, uknots,
-		10, vknots,
-		6 * 3,
+		U_size + ORDER, uknots,
+		V_size + ORDER, vknots,
+		V_size * 3,
 		3,
 		&ctlpoints[0][0][0],
-		4, 4,
+		ORDER, ORDER,
 		GL_MAP2_VERTEX_3);	
 	gluEndSurface(theNurb);
 
@@ -178,9 +182,9 @@ void display(void) {
 	glDisable(GL_LIGHTING);
 	glPointSize(1.0);
 	glColor3f(0, 0, 1);
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < U_size; i++) {
 		glBegin(GL_LINE_STRIP);
-		for (int j = 0; j < 6; j++) {
+		for (int j = 0; j < V_size; j++) {
 			glVertex3f(ctlpoints[i][j][0], ctlpoints[i][j][1], ctlpoints[i][j][2]);
 		}
 		glEnd();
@@ -189,8 +193,8 @@ void display(void) {
 	glPointSize(5.0);
 	glColor3f(1.0, 0.0, 0.0);
 	glBegin(GL_POINTS);
-	for (int i = 0; i < 6; i++) {
-		for (int j = 0; j < 6; j++) {
+	for (int i = 0; i < U_size; i++) {
+		for (int j = 0; j < V_size; j++) {
 			glVertex3f(ctlpoints[i][j][0], ctlpoints[i][j][1], ctlpoints[i][j][2]);
 		}
 	}
