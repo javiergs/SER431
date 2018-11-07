@@ -10,6 +10,9 @@ This course presents topics in real-time rendering and graphics hardware, and th
   <li>Lecture 03. Perlin Noise</li>
   <li>Lecture 04. Skyboxes</li>
   <li>Lecture 07. Fog</li>
+  <li>Lecture 08. Stencil Buffer and Reflections</li>
+  <li>Lecture 10. Linear Shadows</li>
+  <li>Lecture 12. Particle Systems</li>
   <li>Lecture 19. Non-Uniform Rational Basis Splines (NURBS) I</li>
   <li>Lecture 20. Non-Uniform Rational Basis Splines (NURBS) II</li>
   <li>Lecture 21. Non-Uniform Rational Basis Splines (NURBS) III</li>
