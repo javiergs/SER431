@@ -3,14 +3,10 @@
 #include <stdio.h>
 #include <math.h>
 
-#define ELEMENTS(x)    (sizeof(x)/sizeof(x[0]))
 #define V_NUMPOINTS    4
+#define U_NUMPOINTS	   4
 #define V_NUMKNOTS    (V_NUMPOINTS + 4)
-#define S_NUMCOORDS    3
-#define U_NUMPOINTS 4
 #define U_NUMKNOTS    (U_NUMPOINTS + 4)
-#define T_NUMCOORDS    3
-#define MAX_PIECES	20
 
 // Knot sequences for cubic bezier surface and trims 
 GLfloat sknots[V_NUMKNOTS] = { 0., 0., 0., 0., 1., 1., 1., 1. };
@@ -19,9 +15,9 @@ GLfloat tknots[U_NUMKNOTS] = { 0., 0., 0., 0., 1., 1., 1., 1. };
 // Control points for the flag. The Z values are modified to make it wave
 GLfloat ctlpoints[V_NUMPOINTS][U_NUMPOINTS][3] = {
 	{ { 0., 3., 0. },{ 1., 3., 0. },{ 2., 3., 0 },{ 3., 3., 0. } },
-{ { 0., 2., 0. },{ 1., 2., 0. },{ 2., 2., 0 },{ 3., 2., 0. } },
-{ { 0., 1., 0. },{ 1., 1., 0. },{ 2., 1., 0 },{ 3., 1., 0. } },
-{ { 0., 0., 0. },{ 1., 0., 0. },{ 2., 0., 0 },{ 3., 0., 0. } }
+	{ { 0., 2., 0. },{ 1., 2., 0. },{ 2., 2., 0 },{ 3., 2., 0. } },
+	{ { 0., 1., 0. },{ 1., 1., 0. },{ 2., 1., 0 },{ 3., 1., 0. } },
+	{ { 0., 0., 0. },{ 1., 0., 0. },{ 2., 0., 0 },{ 3., 0., 0. } }
 };
 
 GLUnurbsObj *nurbsflag;
