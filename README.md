@@ -13,6 +13,9 @@ This course presents topics in real-time rendering and graphics hardware, and th
   <li>Lecture 08. Stencil Buffer and Reflections</li>
   <li>Lecture 10. Linear Shadows</li>
   <li>Lecture 12. Particle Systems</li>
+  <li>Lecture 13. Curves</li>
+  <li>Lecture 14. Bezier Curves</li>
+  <li>Lecture 15. Hermite and Chaikin Curves</li>
   <li>Lecture 19. Non-Uniform Rational Basis Splines (NURBS) I</li>
   <li>Lecture 20. Non-Uniform Rational Basis Splines (NURBS) II</li>
   <li>Lecture 21. Non-Uniform Rational Basis Splines (NURBS) III</li>
