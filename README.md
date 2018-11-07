@@ -1,4 +1,4 @@
-# CSE240
+# SER431
 Advanced Graphics
 Arizona State University
 
