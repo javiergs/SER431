@@ -42,9 +42,8 @@ void createBolt(Vec3f p1, Vec3f p2, int level) {
 	// printf("* \t INSERT-A (%f, %f, %f) -- (%f, %f, %f)\n\n", p1.x, p1.y, p1.z, p2.x, p2.y, p2.z);
 	for (int t = 0; t < level; t++) {
 		int tam = thunderbolt.size();
-		int startWith = 0; // pow(2, t) - 1;
 		Vec3f middle; int i;
-		for (i = startWith; i < tam; i++) {
+		for (i = 0; i < tam; i++) {
 			p1.x = thunderbolt[0].x1; p1.y = thunderbolt[0].y1; p1.z = thunderbolt[0].z1; 
 			p2.x = thunderbolt[0].x2; p2.y = thunderbolt[0].y2; p2.z = thunderbolt[0].z2;
 			thunderbolt.erase(thunderbolt.begin()); 
