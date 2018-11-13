@@ -21,4 +21,5 @@ Code examples per lecture.
   <li>Lecture 19. Non-Uniform Rational Basis Splines (NURBS) I</li>
   <li>Lecture 20. Non-Uniform Rational Basis Splines (NURBS) II</li>
   <li>Lecture 21. Non-Uniform Rational Basis Splines (NURBS) III</li>
+  <li>Lecture 22. Fractals</li>
 </ul>
