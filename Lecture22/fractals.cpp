@@ -27,8 +27,7 @@ vector<Line> thunderbolt;
 
 // calculate middle points with a displacement for the thunderbolt
 Vec3f calculateMiddle(Vec3f p1, Vec3f p2, int level) {
-	Vec3f O = (p2+p1)/2;
-	Vec3f AO = p1 - O; float radio = AO.length();	
+	Vec3f O = (p2+p1)/2;	
 	float m1 = (p2.y - p1.y) / (p2.x - p1.x);
 	int signo = (random_number()>0.5) ? 1 : -1;
 	float x = O.x + signo*((cos(PI/2 + atan(m1)))/ pow(2, level)); // higher level, small displacement
@@ -187,7 +186,7 @@ void stackBoxes(float x, float y, float z) {
 			stackBoxes(x-50, y-1, z-1);
 			stackBoxes(x-50, y-1, z+1);
 			stackBoxes(x+50, y-1, z-1);
-			stackBoxes(x+50, y-1, z+1);
+			//stackBoxes(x+50, y-1, z+1);
 		}
 }
 
@@ -285,7 +284,7 @@ void display(void) {
 	glPopMatrix();
 	// bolt ----------------------------------------
 	glPushMatrix();
-	glTranslatef(0,0,-300);
+	glTranslatef(-300,0,300);
 	glScalef(100, 100, 100);
 	int size = thunderbolt.size();
 	int in_gray = (size / 2);
